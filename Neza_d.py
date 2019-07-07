@@ -1,18 +1,7 @@
 
-import tkinter
-import os
-import sys
-
-
 global alphabet
 alphabet = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X", "Y", "Z"]
 
-def reset():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-
-def end():
-    main.destroy()
 
 
 def turn_to_valid(string):
@@ -21,17 +10,15 @@ def turn_to_valid(string):
     return string
 
 def no_bin_t(string):
-    no_bin = []      
-    for c in string:  
+    no_bin = []
+    for c in string:
         no_bin.append(c)
     for i in range(2):
         no_bin.pop(0)
     no_bin = "".join(no_bin)
-    return no_bin 
+    return no_bin
 
-def turn():
-    message = m.get()
-    bin_passcode = p.get()
+def turn(message, bin_passcode):
     # get the original length of message and remove it from the message and set the message and passcode to binary
     mess_list = []
     for c in message:
@@ -48,9 +35,8 @@ def turn():
     for i in range (len(original_len_mess)):
         mess_list.pop()
     message = "".join(mess_list)
-    message = no_bin_t(message)  
-    pass_format_r = pass_format.get()
-    bin_passcode = bin(int(bin_passcode, pass_format_r))
+    message = no_bin_t(message)
+    bin_passcode = bin(bin_passcode)
     message = bin(int(message, 16))
     original_len_mess.pop(0)
     original_len_mess = "".join(original_len_mess)
@@ -79,7 +65,7 @@ def turn():
             temp_bit_mess.append(c)
         while (len(temp_bin_pass) != len(temp_bit_mess)):
             temp_bin_pass.pop()
-        bin_passcode = "".join(temp_bin_pass) 
+        bin_passcode = "".join(temp_bin_pass)
     #get the new binary
     message = no_bin_t(message)
     bin_passcode = no_bin_t(bin_passcode)
@@ -90,14 +76,13 @@ def turn():
         elif (message[i] == '0' and bin_passcode[i] == '0'):
             new_message.append("0")
         else:
-            new_message.append("1")   
+            new_message.append("1")
     new_message = str(int("".join(new_message), 2))
     new_message_in_letters = []
     new_message_list = []
     #check wether the message needs to have a 0 added at the beginning
     for c in new_message:
         new_message_list.append(c)
-    print (len(new_message_list))
     if (len(new_message_list) % 2 != 0):
         new_message_list.insert(0, "0")
     new_message = "".join(new_message_list)
@@ -107,36 +92,4 @@ def turn():
     for item in new_message:
         new_message_in_letters.append(alphabet[int(item)])
     new_message = "".join(new_message_in_letters)
-    pnm["text"] = "Decrypted message: " + (new_message)
-    
-#the widget
-main = tkinter.Tk()
-encmes = tkinter.Label(main, text = "Write Encrypted Message")
-encmes.grid(row = 0, column = 1)
-global m
-m = tkinter.Entry(main)
-m.grid(row = 1, column = 1)
-cod = tkinter.Label(main, text = "Passcode")
-cod.grid(row = 2, column = 1)
-global p
-p = tkinter.Entry(main)
-p.grid(row = 3, column = 1)
-passcode_format = tkinter.Label(main, text = "Enter the format of the passcode")
-passcode_format.grid(row = 4, column = 1)
-global pass_format
-pass_format = tkinter.IntVar()
-rb1 = tkinter.Radiobutton(main, text = "Decimal", variable = pass_format, value = 10)
-rb1.grid(row = 5, column = 0)
-rb2 = tkinter.Radiobutton(main, text = "Binary", variable = pass_format, value = 2)
-rb2.grid(row = 5, column = 1)
-rb3 = tkinter.Radiobutton(main, text = "Hexadecimal", variable = pass_format, value = 16)
-rb3.grid(row = 5, column = 2)
-encryptmes = tkinter.Button(main, text = "Decrypt Message", command = turn)
-encryptmes.grid(row = 6, column = 1)
-pnm = tkinter.Message(main, text = "Decrypted Message: ", width = 250)
-pnm.grid(row = 7, column = 1)
-reset= tkinter.Button(main, text = "Reset", command= reset)
-reset.grid(row = 8, column = 0)
-end = tkinter.Button(main, text = "End", command= end)
-end.grid(row = 8, column = 2)
-main.mainloop()
+    return (new_message)

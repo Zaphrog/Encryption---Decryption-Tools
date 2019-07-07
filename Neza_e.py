@@ -1,17 +1,7 @@
-import tkinter
-import os
-import sys
 
 
 global alphabet
 alphabet = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X", "Y", "Z"]
-
-def reset():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-
-def end():
-    main.destroy()
 
 
 def turn_to_valid(string):
@@ -20,21 +10,18 @@ def turn_to_valid(string):
     return string
 
 def no_bin_t(string):
-    no_bin = []      
-    for c in string:  
+    no_bin = []
+    for c in string:
         no_bin.append(c)
     for i in range(2):
         no_bin.pop(0)
     no_bin = "".join(no_bin)
-    return no_bin 
+    return no_bin
 
-def turn():
+def turn(message, bin_passcode):
     #get the necessary imputs from the widget
-    message = m.get()
     message = message.upper()
-    bin_passcode = p.get()
-    pass_format_r = pass_format.get()
-    bin_passcode = str(int(bin_passcode, pass_format_r))
+    bin_passcode = str(bin_passcode)
     #make the message (turn the letters into numbers, copy them without separation into a number [list], join the list and turn the integer of the list into binary)
     bit_message = []
     for letter in message:
@@ -49,7 +36,7 @@ def turn():
             new_bit.append(letter)
         correct_bin = "".join(new_bit)
         bit_message[location] = correct_bin
-    bit_message = "".join(bit_message)   
+    bit_message = "".join(bit_message)
     bit_message = turn_to_valid(bit_message)
     #make passcode binary
     bin_passcode = turn_to_valid(bin_passcode)
@@ -70,7 +57,7 @@ def turn():
             temp_bit_mess.append(c)
         while (len(temp_bin_pass) != len(temp_bit_mess)):
             temp_bin_pass.pop()
-        bin_passcode = "".join(temp_bin_pass) 
+        bin_passcode = "".join(temp_bin_pass)
     #remove the '0b' from both message and passcode
     bin_passcode = no_bin_t(bin_passcode)
     bit_message = no_bin_t(bit_message)
@@ -82,43 +69,13 @@ def turn():
         elif (bit_message[i] == '0' and bin_passcode[i] == '0'):
             new_message.append("0")
         else:
-            new_message.append("1")   
+            new_message.append("1")
     #turn the new message to hexadecimal
     new_message = int("".join(new_message), 2)
     hex_new_message = hex(new_message)
+    if hex_new_message[-1] == "L":
+        hex_new_message = hex_new_message[:-1]
     new_message = str(hex_new_message)
     #the 'f and length of the message help you decrypt it
-    pnm["text"] = "Encrypted message: " + (new_message) + "f" +  str(len(bit_message))
-    print (pnm["text"])
-    
-    
-main = tkinter.Tk()
-encmes = tkinter.Label(main, text = "Write Message")
-encmes.grid(row = 0, column = 1)
-global m
-m = tkinter.Entry(main)
-m.grid(row = 1, column = 1)
-cod = tkinter.Label(main, text = "Passcode")
-cod.grid(row = 2, column = 1)
-global p
-p = tkinter.Entry(main)
-p.grid(row = 3, column = 1)
-passcode_format = tkinter.Label(main, text = "Enter the format of the passcode")
-passcode_format.grid(row = 4, column = 1)
-global pass_format
-pass_format = tkinter.IntVar()
-rb1 = tkinter.Radiobutton(main, text = "Decimal", variable = pass_format, value = 10)
-rb1.grid(row = 5, column = 0)
-rb2 = tkinter.Radiobutton(main, text = "Binary", variable = pass_format, value = 2)
-rb2.grid(row = 5, column = 1)
-rb3 = tkinter.Radiobutton(main, text = "Hexadecimal", variable = pass_format, value = 16)
-rb3.grid(row = 5, column = 2)
-encryptmes = tkinter.Button(main, text = "Encrypt Message", command = turn)
-encryptmes.grid(row = 6, column = 1)
-pnm = tkinter.Message(main, text = "Encrypted Message: ", width = 250)
-pnm.grid(row = 7, column = 1)
-reset= tkinter.Button(main, text = "Reset", command= reset)
-reset.grid(row = 8, column = 0)
-end = tkinter.Button(main, text = "End", command= end)
-end.grid(row = 8, column = 2)
-main.mainloop()
+    new_message = new_message + "f" +  str(len(bit_message))
+    return new_message
