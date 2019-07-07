@@ -18,7 +18,7 @@ def no_bin_t(string):
     no_bin = "".join(no_bin)
     return no_bin
 
-def turn(message, bin_passcode):
+def encrypt(message, bin_passcode):
     #get the necessary imputs from the widget
     message = message.upper()
     bin_passcode = str(bin_passcode)

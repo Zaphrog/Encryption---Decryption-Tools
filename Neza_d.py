@@ -18,7 +18,7 @@ def no_bin_t(string):
     no_bin = "".join(no_bin)
     return no_bin
 
-def turn(message, bin_passcode):
+def decrypt(message, bin_passcode):
     # get the original length of message and remove it from the message and set the message and passcode to binary
     mess_list = []
     for c in message:
