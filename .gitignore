@@ -1,0 +1,5 @@
+# This file specifies what files should be ignored by git.
+# Read more about the .gitignore here: https://git-scm.com/docs/gitignore
+
+# any file ending in .pyc
+*.pyc
