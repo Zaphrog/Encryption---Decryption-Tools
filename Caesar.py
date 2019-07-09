@@ -41,22 +41,20 @@ def decrypt(new_message, encryption):
 def auto_decrypt(message, language, iterations):
     message = message.upper()
     language = language.upper()
-    iterations += 1
     most_used = str(languages[language]["most_used"])
     repeated = collections.defaultdict(int)
     for c in message:
         repeated[c] += 1
     used_letter = max(repeated.keys(), key=(lambda k: repeated[k]))
-    for i in range(1, iterations):
-        most_location = int(alphabet.index(most_used[i-1]))
-        encryption = - most_location + int(alphabet.index(used_letter))
-        old_message_auto = ""
-        for c in message:
-            location = int(alphabet.index(c))
-            old_location = location - encryption
-            if old_location < 0:
-                old_location = old_location +26
-            elif old_location > 26:
-                old_location = old_location - 26
-            old_message_auto = old_message_auto + alphabet[old_location]
-        return old_message_auto
+    most_location = int(alphabet.index(most_used[iterations-1]))
+    encryption = - most_location + int(alphabet.index(used_letter))
+    old_message_auto = ""
+    for c in message:
+        location = int(alphabet.index(c))
+        old_location = location - encryption
+        if old_location < 0:
+            old_location = old_location +26
+        elif old_location > 26:
+            old_location = old_location - 26
+        old_message_auto = old_message_auto + alphabet[old_location]
+    return old_message_auto
