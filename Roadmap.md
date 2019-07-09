@@ -9,8 +9,8 @@ Sunday, July 7th, 2019
 
 Friday, July 12th, 2019
 
-- [ ] merge `decrypt.py` with `caesar.py` adding the `auto_decript` function.
-- [ ] add example for Caesar decription and encription.
+- [X] merge `decrypt.py` with `caesar.py` adding the `auto_decript` function.
+- [X] add example for Caesar decription and encription.
 - [ ] add documentation for Neza, including a comparison: Neza vs Caesar
 
 Sunday, July 14th, 2019
