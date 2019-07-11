@@ -58,3 +58,19 @@ def auto_decrypt(message, language, iterations):
             old_location = old_location - 26
         old_message_auto = old_message_auto + alphabet[old_location]
     return old_message_auto
+
+def encrypt_ascii(message, encryption):
+    new_message = ""
+    for letter in message:
+        location = ord(letter)
+        location += encryption
+        new_message += chr(location)
+    return new_message
+
+def decrypt_ascii(message, encryption):
+    old_message = ""
+    for letter in message:
+        location = ord(letter)
+        location -= encryption
+        old_message += chr(location)
+    return old_message
