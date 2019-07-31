@@ -20,16 +20,29 @@ In a longer message, it is almost 100% sure that the most used character would b
 
 There are other settings, so you can encrypt shorter messages after a few attempts. It changes settings just by pressing "ENCRYPT" again.
 
-#NEZA
+# NEZA Encription Algorithm
 
 Neza is basically an XOR cipher with a password that changes with every block.
+
+### Encription
+
 The first thing the program does when encrypting a message is dividing it into chunks by appending the ASCII code of
-each character to a list. It then randomly generates an 8 bit passcode and calculates the rate of change. That is done by
- `temp_key += ((256 - key) // len(message_list))`. It generates an equal change for each step. At the last step it must be as close to 256 as possible.
- For each letter in the list of the message it runs an XOR calculation with the modified key. At the end it reassembles a new message using the
- ASCII code of the new values. The last step is appending the ASCII code of the key to the new_message, which allows decryption.
+each character to a list. It then randomly generates an 8 bit passcode and calculates the rate of change. 
 
- To decrypt the message, the program removes the last letter (the key) from the message and runs the same calculation to calculate the rate of change.
- Then it just reverts the XOR for every letter and appends the correct letters to a message.
+That is done by:
 
- Its main weakness is that the length of the message is evident.
+```py
+temp_key += ((256 - key) // len(message_list))
+``` 
+
+It generates an equal change for each step. At the last step it must be as close to 256 as possible.
+
+For each letter in the list of the message it runs an XOR calculation with the modified key. At the end it reassembles a new message using the ASCII code of the new values. The last step is appending the ASCII code of the key to the new_message, which allows decryption.
+
+### Decription
+
+To decrypt the message, the program removes the last letter (the key) from the message and runs the same calculation to calculate the rate of change.
+
+Then it just reverts the XOR for every letter and appends the correct letters to a message.
+
+Its main weakness is that the length of the message is evident.
