@@ -1,4 +1,22 @@
-# Caesar_Python
+# Zaphrog Encryption Tools
+
+Simple but powerful encryption tools for software developers.
+
+The following package contains different encryption methods that may be used depending on the ocation:
+
+1. Ceaser Encryption
+2. NEZA Encryption
+3. XOR Encryption.
+
+## Caesar Encryption Python
+
+[ ] TODO: Some very small description about Caesar
+
+### How to use it
+
+[ ] TODO: Simple example an a link to the example.py for Caesar.
+
+### How it works
 
 Caesar is a very simple and popular encryption method:
 - First each letter is represented by a number.
@@ -20,11 +38,17 @@ In a longer message, it is almost 100% sure that the most used character would b
 
 There are other settings, so you can encrypt shorter messages after a few attempts. It changes settings just by pressing "ENCRYPT" again.
 
-# NEZA Encription Algorithm
+## NEZA Encription Algorithm
 
 Neza is basically an XOR cipher with a password that changes with every block.
 
-### Encription
+### How to use it
+
+[ ] TODO: Simple example an a link to the example.py for Neza.
+
+### How it works
+
+#### Encryption
 
 The first thing the program does when encrypting a message is dividing it into chunks by appending the ASCII code of
 each character to a list. It then randomly generates an 8 bit passcode and calculates the rate of change. 
@@ -39,7 +63,7 @@ It generates an equal change for each step. At the last step it must be as close
 
 For each letter in the list of the message it runs an XOR calculation with the modified key. At the end it reassembles a new message using the ASCII code of the new values. The last step is appending the ASCII code of the key to the new_message, which allows decryption.
 
-### Decription
+#### Decryption
 
 To decrypt the message, the program removes the last letter (the key) from the message and runs the same calculation to calculate the rate of change.
 
