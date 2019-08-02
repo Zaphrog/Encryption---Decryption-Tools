@@ -13,5 +13,8 @@ Friday, July 12th, 2019
 - [X] add example for Caesar decription and encription.
 - [ ] add documentation for Neza, including a comparison: Neza vs Caesar
 
-Sunday, July 14th, 2019
+For Version 1
+
 - [ ] convert into PIP package.
+- [ ] Testing Neza for speed.
+- [ ] Testing Neza for compression rate.
