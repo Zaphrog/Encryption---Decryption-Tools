@@ -18,3 +18,13 @@ For Version 1
 - [ ] convert into PIP package.
 - [ ] Testing Neza for speed.
 - [ ] Testing Neza for compression rate.
+- [ ] Better compression rate??? (If possible).
+- [ ] Testing compressing different payloads: Sometimes encryp/decrypt can corrupt the payload if special symbols are included.
+  1. [ ] JSON with UTF-8 (for API encrypt)
+  2. [ ] HTML/CSS/Javascript (for web encrypt).
+  3. [ ] Stream of bits (for video streaming encrypt).
+  4. [ ] Something else?
+- [ ] Documentation updates:
+  1. [ ] Some very small description about Caesar
+  2. [ ] Simple live example an a link to the example.py for Caesar.
+  3. [ ] Simple live example an a link to the example.py for Neza.
