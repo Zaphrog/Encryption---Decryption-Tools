@@ -19,6 +19,7 @@
 - [ ] Testing Neza for speed.
 - [ ] Testing Neza for compression rate.
 - [ ] Better compression rate??? (If possible).
+- [ ] Hashing with bigger numerical system. What could be the biggest? More than hex?
 - [ ] Testing compressing different payloads: Sometimes encryp/decrypt can corrupt the payload if special symbols are included.
   1. [ ] JSON with UTF-8 (for API's)
   2. [ ] HTML/CSS/Javascript (for web).
