@@ -24,7 +24,8 @@
   1. [ ] JSON with UTF-8 (for API's)
   2. [ ] HTML/CSS/Javascript (for web).
   3. [ ] Stream of bits (for video streaming).
-  4. [ ] Something else?
+  4. [ ] Chat system: Multilanguage support, even with weird languages.
+  5. [ ] Something else?
 - [ ] Documentation updates:
   1. [ ] Some very small description about Caesar
   2. [ ] Simple live example an a link to the example.py for Caesar.
