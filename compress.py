@@ -19,7 +19,7 @@ def compress(message):
         compressed_int = compressed_int >> 8
         compressed.insert(0,chr(letter))
     compressed = ''.join(compressed)
-    print(len(compressed))
+    print("Compressed bytes: " + str(len(compressed)))
     return (used_letters, compressed)
 
 
@@ -39,12 +39,19 @@ def decompress(message, letters):
     for item in decompressed:
         item = letters[item-1]
         dc += item
-    print(len(dc))
+    print("Decompressed bytes: " + str(len(dc)))
     return dc
 
-message = "Hashamos la compresion"
-letters, compressed = compress(message)
-print(compressed)
-dec = decompress(compressed, letters)
-print(dec)
+def test(message):
+    letters, compressed = compress(message)
+    print(compressed)
+    dec = decompress(compressed, letters)
+    print(dec)
+
+test("Testing...123")
+print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+test("Exactly")
+print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+test("The politician apologizes? Your changing native sleeps within the suspect hammer. The crush overflows with the shame! A trumpet pencils the socket. The conceptual snail communicates the floating flood.")
+
 
