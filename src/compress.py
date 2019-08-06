@@ -40,11 +40,6 @@ def decompress(message, letters):
         dc += item
     return dc
 
-def test(message):
-    letters, compressed = compress(message)
-    print(compressed)
-    dec = decompress(compressed, letters)
-    print(dec)
 
 
 

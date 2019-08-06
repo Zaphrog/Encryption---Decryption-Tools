@@ -46,9 +46,3 @@ def decrypt(message, key, letters):
     return decompressed
 
 
-message = "Testing...123"
-key = 97
-enc, letters = encrypt(message, key)
-print(enc)
-dec = decrypt(enc, key, letters)
-print(dec)
