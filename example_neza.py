@@ -8,7 +8,7 @@ decrypted_message = Neza.decrypt(encrypted_message, key, letters)
 
 print_table([['key', str(key)],
              ['decrypted message', str(decrypted_message)],
-             ['size comparison', "original: "+str(len(str(decrypted_message)))+" vs encrypted: "+str((len(str(bin(encrypted_message)))-2)//8)],
+             ['size comparison', "original: "+str(len(str(decrypted_message)))+" vs encrypted: "+str((len(encrypted_message)))],
              ['encrypted message', str(encrypted_message)]
              ])
 
@@ -19,5 +19,5 @@ decrypted_message = Neza.decrypt(encrypted_message, key, letters)
 
 print_table([['key', str(key)],
              ['decrypted message', str(decrypted_message)],
-             ['size comparison', "original: "+str(len(decrypted_message))+" vs encrypted: "+str((len(str(bin(encrypted_message)))-2)//8)],
+             ['size comparison', "original: "+str(len(decrypted_message))+" vs encrypted: "+str((len(encrypted_message)))],
              ['encrypted message', str(encrypted_message)]])

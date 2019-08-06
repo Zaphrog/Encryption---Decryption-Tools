@@ -7,7 +7,6 @@ def generate_key():
     return key
 
 
-
 def encrypt(message, key):
     letters, compressed = compress.compress(message)
     message_list = []
@@ -23,15 +22,14 @@ def encrypt(message, key):
         message_int = message_int << 8
         message_int += item
         encrypted += chr(item)
-    return message_int, letters
+    return encrypted, letters
 
 def decrypt(message, key, letters):
     message_list = []
     message_int = 0
     new_message = ""
-    while message > 0:
-        message_list.insert(0, (message % 2**8))
-        message = message >> 8
+    for c in message:
+        message_list.append(ord(c))
     temp_key = key
     for i in range(len(message_list)):
         message_list[i] = message_list[i] ^ temp_key
@@ -44,5 +42,3 @@ def decrypt(message, key, letters):
     message_int = message_int << 8
     message_int += key
     return decompressed
-
-
